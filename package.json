@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "docker-build": "docker build . -t chesslink",
+    "docker": "docker run -p 3000:3000 --rm --name chesslink-app chesslink"
   },
   "dependencies": {
     "chess.js": "^0.12.0",
