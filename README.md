@@ -31,7 +31,6 @@ The App is live here: _insert-url-here_
 - _Component.js -_ The actual React component
 - _Component.styles.js_ - The Styled Components file for the component
 - _Component.test.js_ - The tests
-- _Component.stories.js_ - The Storybook file
 
 # Aliases
 
@@ -56,27 +55,15 @@ In general branches should have a prefix and a name. e.g. _feature/drag-n-drop-p
 This the prefixes we will use:
 
 - **main** - this is the most stable version of our app, if we push here it will auto deploy to cloud
-- **release/x.y.z** - this is stable versions after features have been implemented. (see [Version Semantics](#version-semantics))
 - **develop** - main branch for release development
 - **hotfix** - urgent fixes for bugs that break the code
 - **bugfix** - branches for fixing bugs
 - **feature** - branches who implements a feature
 - **refactor** - changes the code structure, or naming, etc... if the app function the same after your changes this is the branch prefix for you
-- **optimization** - branches for optimizations
-- **junk** - branches meant to be deleted and never merged - for testing stuff and playing with the code
 
 ## Flows
 
 This how we merge/create/delete branches
 
 - **main** - we _never_ push to this branch we only merge here hotfixes and releases. This branch have a pipeline for auto deploy to cloud.
-- **release** - 'testing' environment for release goals, we only merge from dev to update this branch (or hotfixes), this branch should be stable.
 - **develop** - here we push hotfixes or merge other branches, and we branch form this to make new feature etc...
-
-## Version Semantics
-
-Given a version number MAJOR.MINOR.PATCH, increment the:
-
-- **MAJOR** version when you make incompatible API changes,
-- **MINOR** version when you add functionality in a backwards compatible manner, and
-- **PATCH** version when you make backwards compatible bug fixes.
