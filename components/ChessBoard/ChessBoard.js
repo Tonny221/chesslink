@@ -1,15 +1,33 @@
+import { React, Fragment } from "react";
 import ChessPiece from "@components/ChessPiece/ChessPiece";
-import React from "react";
-import Tile from "./Tile/Tile.styles";
+import { Row, Tile } from "./ChessBoard.styles";
+import { isTileBlack } from "@services/chess/chess.service";
 
-const ChessBoard = () => {
-  const data = [[], [], [], [], [], [], [], []];
+const ChessBoard = ({ data }) => {
   return (
-    <div>
-      <Tile>
-        <ChessPiece />
-      </Tile>
-    </div>
+    <>
+      {data.map((row, rowIndex) => {
+        return (
+          <Row key={rowIndex}>
+            {row.map((chesspiece, colIndex) => {
+              return (
+                <Tile
+                  key={rowIndex * data.length + colIndex}
+                  isBlack={isTileBlack(rowIndex, colIndex)}
+                >
+                  {(true || chesspiece) && (
+                    <ChessPiece
+                      type={chesspiece.type || "bishop"}
+                      color={chesspiece.color || "black"}
+                    />
+                  )}
+                </Tile>
+              );
+            })}
+          </Row>
+        );
+      })}
+    </>
   );
 };
 
