@@ -5,3 +5,7 @@ export const isTileBlack = (row, col) => {
 export const isTileWhite = (row, col) => {
   return !isTileBlack(row, col);
 };
+
+class Chess {
+  constructor() {}
+}

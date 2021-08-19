@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 const Tile = styled.div(({ isBlack }) => {
-  const size = "4rem";
+  const cssSize = `4rem`;
   return {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: size,
-    height: size,
-    backgroundColor: isBlack ? "green" : "red",
+    width: cssSize,
+    height: cssSize,
+    backgroundColor: isBlack ? "dodgerblue" : "gold",
   };
 });
 
 const Row = styled.div(() => {
   return {
     display: "flex",
+    flexDirection: "row",
   };
 });
 
