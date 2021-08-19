@@ -1,1 +1,1 @@
-export * from "./LocalStorage/LocalStorage.service";
+export * from "./chess/chess.service";
