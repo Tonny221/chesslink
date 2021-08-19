@@ -1,13 +1,16 @@
 import ChessBoard from "@components/ChessBoard/ChessBoard";
-import React from "react";
+import chess, { move } from "@services/chess/chess.service";
+import React, { useEffect, useState } from "react";
 
 const Room = () => {
-  const gridSize = 8;
-  const data = [...Array(gridSize)].map((e) => Array(gridSize).fill(1));
+  const [chessData, setChessData] = useState(chess());
 
+  const movePiece = (from, to) => {
+    setChessData(move(chessData, from, to));
+  };
   return (
     <>
-      <ChessBoard data={data} />
+      <ChessBoard chessData={chessData} movePiece={movePiece} />
     </>
   );
 };

@@ -19,4 +19,13 @@ const Row = styled.div(() => {
   };
 });
 
-export { Tile, Row };
+const BoardContainer = styled.div(() => {
+  return {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+});
+
+export { Tile, Row, BoardContainer };

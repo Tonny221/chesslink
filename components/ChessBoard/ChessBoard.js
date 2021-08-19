@@ -1,24 +1,30 @@
-import { React, Fragment } from "react";
+import { React } from "react";
 import ChessPiece from "@components/ChessPiece/ChessPiece";
-import { Row, Tile } from "./ChessBoard.styles";
-import { isTileBlack } from "@services/chess/chess.service";
+import { Row, Tile, BoardContainer } from "./ChessBoard.styles";
+import { getWidth, isTileBlack } from "@services/chess/chess.service";
 
-const ChessBoard = ({ data }) => {
+const ChessBoard = ({ chessData, movePiece }) => {
   return (
-    <>
-      {data.map((row, rowIndex) => {
+    <BoardContainer>
+      {chessData.board.map((row, rowIndex) => {
         return (
           <Row key={rowIndex}>
-            {row.map((chesspiece, colIndex) => {
+            {row.map((chessPiece, colIndex) => {
               return (
                 <Tile
-                  key={rowIndex * data.length + colIndex}
+                  key={rowIndex * getWidth(chessData) + colIndex}
                   isBlack={isTileBlack(rowIndex, colIndex)}
                 >
-                  {(true || chesspiece) && (
+                  {chessPiece && (
                     <ChessPiece
-                      type={chesspiece.type || "bishop"}
-                      color={chesspiece.color || "black"}
+                      type={chessPiece.type}
+                      color={chessPiece.color}
+                      onClick={() => {
+                        movePiece(
+                          [rowIndex, colIndex],
+                          [rowIndex + 1, colIndex]
+                        );
+                      }}
                     />
                   )}
                 </Tile>
@@ -27,7 +33,7 @@ const ChessBoard = ({ data }) => {
           </Row>
         );
       })}
-    </>
+    </BoardContainer>
   );
 };
 
