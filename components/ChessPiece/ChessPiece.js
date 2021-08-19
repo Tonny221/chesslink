@@ -1,20 +1,57 @@
 import React from "react";
 import Image from "next/image";
-import { blackBishop, whiteBishop } from "@assets/images/chess-pieces/index.js";
+import {
+  blackKing,
+  blackQueen,
+  blackRook,
+  blackBishop,
+  blackKnight,
+  blackPawn,
+  whiteKing,
+  whiteQueen,
+  whiteRook,
+  whiteBishop,
+  whiteKnight,
+  whitePawn,
+} from "@assets/images/chess-pieces/index.js";
+import {
+  BISHOP,
+  KING,
+  KNIGHT,
+  PAWN,
+  QUEEN,
+  ROOK,
+  WHITE,
+} from "@utils/constants";
 
 const getImageByColorAndType = (type, color) => {
+  const isWhite = color === WHITE;
   switch (type) {
-    case "bishop":
-      return color === "white" ? whiteBishop : blackBishop;
+    case KING:
+      return isWhite ? whiteKing : blackKing;
+    case QUEEN:
+      return isWhite ? whiteQueen : blackQueen;
+    case ROOK:
+      return isWhite ? whiteRook : blackRook;
+    case BISHOP:
+      return isWhite ? whiteBishop : blackBishop;
+    case KNIGHT:
+      return isWhite ? whiteKnight : blackKnight;
+    case PAWN:
+      return isWhite ? whitePawn : blackPawn;
 
     default:
       return null;
   }
 };
 
-const ChessPiece = ({ type, color, size }) => {
+const ChessPiece = ({ type, color, size, onClick }) => {
   const image = getImageByColorAndType(type, color);
-  return image ? <Image src={image} height={size} width={size} /> : null;
+  return image ? (
+    <Image src={image} height={size} width={size} onClick={onClick} />
+  ) : (
+    <div>{`${color}-${type}`}</div>
+  );
 };
 
 export default ChessPiece;
