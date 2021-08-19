@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
 
       <main>
         <h1>ChessLink</h1>
-        <button>room</button>
+        <Link href="/room">room</Link>
       </main>
     </div>
   );
