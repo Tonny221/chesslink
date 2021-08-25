@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Tile = styled.div(({ color, size }) => {
-  const cssSize = `${size || 1}rem`;
+  const cssSize = `${size || 16}px`;
   return {
     display: "flex",
     justifyContent: "center",

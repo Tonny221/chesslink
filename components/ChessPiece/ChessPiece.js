@@ -45,10 +45,10 @@ const getImageByColorAndType = (type, color) => {
   }
 };
 
-const ChessPiece = ({ type, color, onClick }) => {
+const ChessPiece = ({ type, color, size, onClick }) => {
   const image = getImageByColorAndType(type, color);
   return image ? (
-    <Image src={image} onClick={onClick} />
+    <Image src={image} width={size} height={size} onClick={onClick} />
   ) : (
     <div>{`${color}-${type}`}</div>
   );

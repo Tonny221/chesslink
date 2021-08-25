@@ -8,7 +8,6 @@ const Room = () => {
 
   useEffect(() => {
     const chess = new Chess();
-    console.log(chess);
     setChess(chess);
   }, []);
 
