@@ -10,7 +10,7 @@ const Room = () => {
     setChessData(move(chessData, from, to));
   };
   return (
-    <Background>
+    <Background foregroundColor="#fc9003" opacity="0.5">
       <ChessBoard chessData={chessData} movePiece={movePiece} />
     </Background>
   );
