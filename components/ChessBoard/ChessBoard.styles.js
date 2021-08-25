@@ -25,6 +25,7 @@ const BoardContainer = styled.div(() => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    padding: "50px 0",
   };
 });
 
