@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-const Tile = styled.div(({ isBlack }) => {
-  const cssSize = `4rem`;
+const Tile = styled.div(({ color, size }) => {
+  const cssSize = `${size || 1}rem`;
   return {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: cssSize,
     height: cssSize,
-    backgroundColor: isBlack ? "dodgerblue" : "gold",
+    width: cssSize,
+    backgroundColor: color,
   };
 });
 
@@ -25,6 +25,8 @@ const BoardContainer = styled.div(() => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    height: "100%",
+    width: "100%",
   };
 });
 
