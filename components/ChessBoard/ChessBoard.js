@@ -9,6 +9,10 @@ const ChessBoard = ({ chess, movePiece, getAllMoves }) => {
   const windowSize = useWindowSize();
   const debouncedWindowSize = useDebounce(windowSize, 50);
 
+  // TODO: move this to a centerlized file with all the config maybe even redux
+  const blackTileColor = "rebeccapurple";
+  const whiteTileColor = "gold";
+
   const calculateTileSize = (windowSize) => {
     const smallestDimension = Math.min(windowSize.width, windowSize.height);
     const isPhone = smallestDimension < 500;
@@ -25,7 +29,9 @@ const ChessBoard = ({ chess, movePiece, getAllMoves }) => {
                 <Tile
                   key={rowIndex * row.length + colIndex}
                   color={
-                    isTileBlack(rowIndex, colIndex) ? "rebeccapurple" : "gold"
+                    isTileBlack(rowIndex, colIndex)
+                      ? blackTileColor
+                      : whiteTileColor
                   }
                   size={calculateTileSize(debouncedWindowSize)}
                 >
