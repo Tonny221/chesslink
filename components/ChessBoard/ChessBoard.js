@@ -10,8 +10,8 @@ const ChessBoard = ({ chess, movePiece, getAllMoves, isBoardReversed }) => {
   const debouncedWindowSize = useDebounce(windowSize, 50);
 
   // TODO: move this to a centerlized file with all the config maybe even redux
-  const blackTileColor = "rebeccapurple";
-  const whiteTileColor = "gold";
+  const blackTileColor = "#a27035";
+  const whiteTileColor = "#F0E1D1";
 
   const calculateTileSize = (windowSize) => {
     const smallestDimension = Math.min(windowSize.width, windowSize.height);
