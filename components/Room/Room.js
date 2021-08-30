@@ -4,6 +4,7 @@ import * as ChessJS from "chess.js";
 const Chess = typeof ChessJS === "function" ? ChessJS : ChessJS.Chess;
 
 const Room = () => {
+  const [isPlayerWhite, setIsPlayerWhite] = useState(false);
   const [chess, setChess] = useState();
 
   useEffect(() => {
@@ -22,11 +23,15 @@ const Room = () => {
 
   return (
     <>
+      <button onClick={() => setIsPlayerWhite(!isPlayerWhite)}>
+        change view
+      </button>
       {chess && (
         <ChessBoard
           chess={chess}
           movePiece={movePiece}
           getAllMoves={getAllMoves}
+          isBoardReversed={isPlayerWhite}
         />
       )}
     </>

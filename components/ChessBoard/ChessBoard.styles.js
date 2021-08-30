@@ -19,10 +19,10 @@ const Row = styled.div(() => {
   };
 });
 
-const BoardContainer = styled.div(() => {
+const BoardContainer = styled.div(({ isBoardReversed }) => {
   return {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: isBoardReversed ? "column" : "column-reverse",
     justifyContent: "center",
     alignItems: "center",
     height: "100%",

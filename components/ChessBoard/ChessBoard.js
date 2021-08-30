@@ -1,11 +1,11 @@
-import { React } from "react";
+import { React, useState } from "react";
 import ChessPiece from "@components/ChessPiece/ChessPiece";
 import { Row, Tile, BoardContainer } from "./ChessBoard.styles";
 import { isTileBlack } from "@services/chess/chess.service";
 import useWindowSize from "@hooks/useWindowSize";
 import useDebounce from "@hooks/useDebounce";
 
-const ChessBoard = ({ chess, movePiece, getAllMoves }) => {
+const ChessBoard = ({ chess, movePiece, getAllMoves, isBoardReversed }) => {
   const windowSize = useWindowSize();
   const debouncedWindowSize = useDebounce(windowSize, 50);
 
@@ -20,34 +20,38 @@ const ChessBoard = ({ chess, movePiece, getAllMoves }) => {
   };
 
   return (
-    <BoardContainer>
-      {chess.board().map((row, rowIndex) => {
-        return (
-          <Row key={rowIndex}>
-            {row.map((chessPiece, colIndex) => {
-              return (
-                <Tile
-                  key={rowIndex * row.length + colIndex}
-                  color={
-                    isTileBlack(rowIndex, colIndex)
-                      ? blackTileColor
-                      : whiteTileColor
-                  }
-                  size={calculateTileSize(debouncedWindowSize)}
-                >
-                  {chessPiece && (
-                    <ChessPiece
-                      type={chessPiece.type}
-                      color={chessPiece.color}
-                      size={calculateTileSize(debouncedWindowSize)}
-                    />
-                  )}
-                </Tile>
-              );
-            })}
-          </Row>
-        );
-      })}
+    <BoardContainer isBoardReversed={isBoardReversed}>
+      {chess
+        .board()
+        .reverse()
+        .map((row, rowIndex) => {
+          return (
+            <Row key={rowIndex}>
+              {row.map((chessPiece, colIndex) => {
+                return (
+                  <Tile
+                    key={rowIndex * row.length + colIndex}
+                    onClick={() => console.log([rowIndex + 1, colIndex + 1])}
+                    color={
+                      isTileBlack(rowIndex, colIndex)
+                        ? blackTileColor
+                        : whiteTileColor
+                    }
+                    size={calculateTileSize(debouncedWindowSize)}
+                  >
+                    {chessPiece && (
+                      <ChessPiece
+                        type={chessPiece.type}
+                        color={chessPiece.color}
+                        size={calculateTileSize(debouncedWindowSize)}
+                      />
+                    )}
+                  </Tile>
+                );
+              })}
+            </Row>
+          );
+        })}
     </BoardContainer>
   );
 };
