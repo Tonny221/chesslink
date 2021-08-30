@@ -25,6 +25,7 @@ const BoardContainer = styled.div(({ isBoardReversed }) => {
     flexDirection: isBoardReversed ? "column" : "column-reverse",
     justifyContent: "center",
     alignItems: "center",
+    padding: "50px 0",
     height: "100%",
     width: "100%",
   };
