@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-const Tile = styled.div(({ isBlack }) => {
-  const cssSize = `4rem`;
+const Tile = styled.div(({ color, size }) => {
+  const cssSize = `${size || 16}px`;
   return {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: cssSize,
     height: cssSize,
-    backgroundColor: isBlack ? "dodgerblue" : "gold",
+    width: cssSize,
+    backgroundColor: color,
   };
 });
 
@@ -19,12 +19,14 @@ const Row = styled.div(() => {
   };
 });
 
-const BoardContainer = styled.div(() => {
+const BoardContainer = styled.div(({ isBoardReversed }) => {
   return {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: isBoardReversed ? "column" : "column-reverse",
     justifyContent: "center",
     alignItems: "center",
+    height: "100%",
+    width: "100%",
   };
 });
 

@@ -1,6 +1,6 @@
-export const KING = "KING";
-export const QUEEN = "QUEEN";
-export const ROOK = "ROOK";
-export const BISHOP = "BISHOP";
-export const KNIGHT = "KNIGHT";
-export const PAWN = "PAWN";
+export const KING = "k";
+export const QUEEN = "q";
+export const ROOK = "r";
+export const BISHOP = "b";
+export const KNIGHT = "n";
+export const PAWN = "p";
