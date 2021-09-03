@@ -1,12 +1,12 @@
 # Chess Link
 
-The App is live here: _insert-url-here_
+The App is live here: https://chesslink.vercel.app/
 
 # Tech Stack
 
 - Next.js ([docs](https://nextjs.org/docs/getting-started))
 - Chess.js - for the game engine ([docs](https://github.com/jhlywa/chess.js/blob/master/README.md))
-- Firebase - for hosting ([docs](https://firebase.google.com/docs/hosting))
+- Vercel - for hosting ([docs](https://nextjs.org/docs/deployment))
 - Firebase - for db ([docs](https://firebase.google.com/docs/storage))
 - SocketIO - for realtime connection between the players and server ([docs](https://socket.io/docs/v4))
 - StyledComponents - for dynamic styling ([docs](https://styled-components.com/docs))
