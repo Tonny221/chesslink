@@ -1,11 +1,12 @@
-export const isTileBlack = (row, col) => {
-  return row % 2 === 0 ? col % 2 === 0 : col % 2 !== 0;
+import { isEven, isOdd } from "@utils/helpers/math";
+
+const isTileBlack = (row, col, flipColors = false) => {
+  const isBlack = isEven(row) ? isOdd(col) : isEven(col);
+  return flipColors ? isBlack : !isBlack;
 };
 
-export const isTileWhite = (row, col) => {
-  return !isTileBlack(row, col);
+const isTileWhite = (row, col, flipColors = false) => {
+  return !isTileBlack(row, col, flipColors);
 };
 
-class Chess {
-  constructor() {}
-}
+export { isTileBlack, isTileWhite };

@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { blackBishop, whiteBishop } from "@assets/images/chess-pieces/index.js";
 
-const getImageByColorAndType = (type, color) => {
-  switch (type) {
-    case "bishop":
-      return color === "white" ? whiteBishop : blackBishop;
-
-    default:
-      return null;
-  }
+const getImageByColorAndType = async (type, color) => {
+  const imgName = `${color.toLowerCase()}-${type.toLowerCase()}`;
+  const img = await import(`@assets/images/chess-pieces/${imgName}.svg`);
+  return img;
 };
 
-const ChessPiece = ({ type, color, size }) => {
-  const image = getImageByColorAndType(type, color);
-  return image ? <Image src={image} height={size} width={size} /> : null;
+const ChessPiece = ({ type, color, size, onClick }) => {
+  let [pieceImg, setPieceImg] = useState('');
+
+  useEffect(async () => {
+    const img = await getImageByColorAndType(type, color);
+    setPieceImg(img);
+    console.log({pieceImg})
+  }, []);
+
+  return pieceImg ? (
+    <Image src={pieceImg} height={size} width={size} onClick={onClick} />
+  ) : (
+    <div>{`${color}-${type}`}</div>
+  );
 };
 
 export default ChessPiece;
